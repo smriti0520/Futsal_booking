@@ -1,0 +1,30 @@
+{% extends 'my_app/base.html' %}
+{% block head %}
+{%load static%}
+<link rel="stylesheet" href="{% static "my_app/new.css" %}" />
+{% endblock %}
+{% block content %}
+<div class="name"><h3>LOG IN </h3></div>
+    <div class="container" >
+      <div class="contain" style=" padding: 13%; margin-left: 15%;">
+        <form action="" method='post'>
+            {% csrf_token %}
+            <div class="half_form">
+            <label for="email">Email:</label><br>
+            {{login_form.email}}
+            <br><br>
+             <label for="password">Password:</label><br>
+            {{login_form.password}}
+            <br><br>
+            <button class="btn btn-primary brn-sucess" style="background-color:skyblue">Log In</button>
+        </form>
+      </div>
+      <div style="margin-top:17px;">
+      {%if log_error%}
+          <dailog class="msgbox" style="text-align:center;" > 
+              {{log_error}}
+          </dialog> 
+        {% endif %}
+      </div>
+    </div>
+{% endblock %}
